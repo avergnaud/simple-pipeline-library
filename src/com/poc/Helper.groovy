@@ -11,9 +11,13 @@ static String hello() {
       .getBuilds()
       .size();
 
-   return 'Hello World. ' +  numberOfBuilds + ' builds'
+   return 'Hello World. ' +  numberOfBuilds + ' builds';
 }
 
 static int add(int i, int j) {
    return i + j;
+}
+
+static String abc() {
+   return "abc";
 }
