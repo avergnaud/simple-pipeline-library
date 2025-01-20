@@ -2,9 +2,15 @@
 
 ## problématique de l'IDE
 
+### VSCode
+
 Exemple de VSCode : installer l'extension pour Java.
 
 ![VSCode extension](./docs/IDE_support_example.png?raw=true)
+
+### IntelliJ
+
+auto-complétion ?
 
 ## étape 1 : vérifier la syntaxe groovy à la compilation
 
@@ -32,6 +38,8 @@ Démo : [démo groovy compile](./docs/1_groovy_compile.webm?raw=true)
 
 ## étape 2 : compiler avec les API Jenkins
 
+### doc
+
 Important : CPS [https://www.jenkins.io/doc/book/pipeline/cps-method-mismatches/](https://www.jenkins.io/doc/book/pipeline/cps-method-mismatches/)
 
 [https://www.jenkins.io/doc/book/pipeline/shared-libraries/](https://www.jenkins.io/doc/book/pipeline/shared-libraries/)
@@ -40,9 +48,11 @@ Important : CPS [https://www.jenkins.io/doc/book/pipeline/cps-method-mismatches/
 
 [https://hub.docker.com/_/jenkins](https://hub.docker.com/_/jenkins)
 
-podman container run -p 8080:8080 -p 50000:50000 -v ${PWD}/jenkins_local:/var/jenkins_home jenkins/jenkins:lts
+### run jenkins container
 
-sudo docker run -p 8080:8080 -p 50000:50000 --restart=on-failure -v $(pwd)/local_jenkins:/var/jenkins_home jenkins/jenkins:lts
+sudo docker run -p 8080:8080 -p 50000:50000 --restart=on-failure -v $(pwd)/local_jenkins:/var/jenkins_home --dns 1.1.1.1 --dns 8.8.8.8 jenkins/jenkins:lts
+
+### install initiale de jenkins
 
 ![install jenkins step 1](./docs/install_jenkins_step1.png?raw=true)
 
@@ -51,4 +61,28 @@ sudo docker container exec -it 54d0f8ef5748 /bin/bash
 Lors de l'install, on accepte les "suggested plugins"
 
 ![install jenkins step 2](./docs/install_jenkins_step2.png?raw=true)
+
+### plugin Node.JS
+
+Ajouter le plugin Node.JS (parce-que notre repo d'exemple build du node)
+
+![install jenkins step 3](./docs/install_jenkins_step3.png?raw=true)
+
+Configurer le plugin
+
+Ensuite [http://localhost:8080/manage/configureTools/](http://localhost:8080/manage/configureTools/)
+
+![install jenkins step 4](./docs/install_jenkins_step4.png?raw=true)
+
+### job qui build l'app node.JS
+
+Ensuite configurer le job
+
+![setup build step 1](./docs/setup_build_step1.png?raw=true)
+
+![setup build step 2](./docs/setup_build_step2.png?raw=true)
+
+### configuration pipeline library
+
+![configure shared library](./docs/configure_shared_library_1.png?raw=true)
 
