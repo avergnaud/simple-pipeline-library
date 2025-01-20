@@ -1,16 +1,25 @@
 # simple-pipeline-library
 
-## problématique de l'IDE
+## Besoin
 
-### VSCode
+Développer une [Jenkins shared library](https://www.jenkins.io/doc/book/pipeline/shared-libraries/) :
 
-Exemple de VSCode : installer l'extension pour Java.
+ * Compiler en local (syntaxe groovy, imports de jenkins-core ou de plugins Jenkins)
+ * Tester en local (JUnit)
 
-![VSCode extension](./docs/IDE_support_example.png?raw=true)
+## Problématique de l'IDE
 
-### IntelliJ
+On n'explique pas comment ajouter le support pour Groovy dans tel ou tel IDE (VSCode, IntelliJ...)
 
-auto-complétion ?
+## Solution
+
+### Démos
+
+ * Compiler en local, syntaxe Groovy : [démo 1](./docs/demo1_compile.mp4)
+ * Compiler en local, import depuis jenkins-core : [démo 2](./docs/demo2_compile.mp4)
+ * Tester en local (TU) : [démo 3](./docs/demo3_TU.mp4)
+
+## Détails
 
 ## build du simple-pipeline-library
 
