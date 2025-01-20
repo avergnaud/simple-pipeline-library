@@ -1,3 +1,5 @@
+local_jenkins/
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
