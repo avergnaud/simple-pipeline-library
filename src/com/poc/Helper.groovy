@@ -13,3 +13,7 @@ static String hello() {
 
    return 'Hello World. ' +  numberOfBuilds + ' builds'
 }
+
+static int add(int i, int j) {
+   return i + j;
+}
