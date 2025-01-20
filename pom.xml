@@ -68,7 +68,7 @@
             <artifactId>jenkins-core</artifactId>
             <version>2.479.3</version>
         </dependency>
-        <!-- jenkins-core dépend de servlet-api
+        <!-- jenkins-core jenkins.model.Jenkins dépend de servlet-api
         cf https://mvnrepository.com/artifact/org.jenkins-ci.main/jenkins-core/2.479.3 -->
         <dependency>
             <groupId>jakarta.servlet</groupId>

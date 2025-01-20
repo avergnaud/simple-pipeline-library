@@ -18,14 +18,44 @@ On n'explique pas comment ajouter le support pour Groovy dans tel ou tel IDE (VS
  * Compiler en local, syntaxe Groovy : [démo 1](./docs/demo1_compile.mp4)
  * Compiler en local, import depuis jenkins-core : [démo 2](./docs/demo2_compile.mp4)
  * Tester en local (TU) : [démo 3](./docs/demo3_TU.mp4)
+ * Build d'un [projet](https://github.com/avergnaud/nodejs-hello-world) depuis un jenkins local, en appelant ce pipeline library : [démo 4](./docs/demo4_build_jenkins_local.mp4)
 
-## Détails
+## Détails de la solution
 
-## build du simple-pipeline-library
+Pour compiler le groovy on a besoin de :
 
-/home/adrien/dev/apache-maven-3.9.9/bin/mvn clean package --settings ./settings.xml
+ * Fichier pom.xml
+```
+<configScript>${project.basedir}/groovy-compiler-config.groovy</configScript>
+```
+ * Fichier groovy-compiler-config.groovy
 
-## étape 1 : vérifier la syntaxe groovy à la compilation
+Pour tirer la dépendance à jenkins-core on a besoin de :
+ * Fichier pom.xml
+```
+<dependency>
+    <groupId>org.jenkins-ci.main</groupId>
+    <artifactId>jenkins-core</artifactId>
+    <version>2.479.3</version>
+</dependency>
+```
+ * Fichier settings.xml. 
+ 
+ Attention : le fichier settings.xml ne doit pas a priori être placé à la racine du repo. C'est le cas ici pour faciliter la démo.
+
+ Build local, exécuter :
+ ```
+ mvn clean package --settings ./settings.xml
+ ```
+
+TU local, exécuter :
+ ```
+ mvn clean test --settings ./settings.xml
+ ```
+
+### Détails de la démo
+
+### étape 1 : vérifier la syntaxe groovy à la compilation
 
 [https://docs.groovy-lang.org/latest/html/documentation/tools-groovyc.html#_maven_integration](https://docs.groovy-lang.org/latest/html/documentation/tools-groovyc.html#_maven_integration)
 
@@ -49,9 +79,7 @@ On n'explique pas comment ajouter le support pour Groovy dans tel ou tel IDE (VS
 
 Démo : [démo groovy compile](./docs/1_groovy_compile.webm?raw=true)
 
-## étape 2 : compiler avec les API Jenkins
-
-### doc
+### étape 2 : compiler avec les API Jenkins
 
 Important : CPS [https://www.jenkins.io/doc/book/pipeline/cps-method-mismatches/](https://www.jenkins.io/doc/book/pipeline/cps-method-mismatches/)
 
@@ -61,9 +89,11 @@ Important : CPS [https://www.jenkins.io/doc/book/pipeline/cps-method-mismatches/
 
 [https://hub.docker.com/_/jenkins](https://hub.docker.com/_/jenkins)
 
-### run jenkins container
+Pour exécuter un Jenkins en local :
 
+```
 sudo docker run -p 8080:8080 -p 50000:50000 --restart=on-failure -v $(pwd)/local_jenkins:/var/jenkins_home --dns 1.1.1.1 --dns 8.8.8.8 jenkins/jenkins:lts
+```
 
 ### install initiale de jenkins
 
@@ -99,6 +129,6 @@ Ensuite configurer le job
 
 ![configure shared library](./docs/configure_shared_library_1.png?raw=true)
 
-## étape 3 TU
+### étape 3 TU
 
 [https://www.tutorialspoint.com/groovy/groovy_unit_testing.htm](https://www.tutorialspoint.com/groovy/groovy_unit_testing.htm)
