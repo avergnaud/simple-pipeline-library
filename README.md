@@ -12,6 +12,10 @@ Exemple de VSCode : installer l'extension pour Java.
 
 auto-complétion ?
 
+## build du simple-pipeline-library
+
+/home/adrien/dev/apache-maven-3.9.9/bin/mvn clean package --settings ./settings.xml
+
 ## étape 1 : vérifier la syntaxe groovy à la compilation
 
 [https://docs.groovy-lang.org/latest/html/documentation/tools-groovyc.html#_maven_integration](https://docs.groovy-lang.org/latest/html/documentation/tools-groovyc.html#_maven_integration)
