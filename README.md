@@ -39,6 +39,7 @@ Pour tirer la dépendance à jenkins-core on a besoin de :
     <version>2.479.3</version>
 </dependency>
 ```
+(la version doit correspondre à celle du runtime Jenkins)
  * Fichier settings.xml. 
  
  Attention : le fichier settings.xml ne doit pas a priori être placé à la racine du repo. C'est le cas ici pour faciliter la démo.
@@ -52,6 +53,8 @@ TU local, exécuter :
  ```
  mvn clean test --settings ./settings.xml
  ```
+
+---
 
 ### Détails de la démo
 
@@ -76,8 +79,6 @@ TU local, exécuter :
 [http://groovy.github.io/GMavenPlus/compile-mojo.html#configScript](http://groovy.github.io/GMavenPlus/compile-mojo.html#configScript)
 
 [http://groovy-lang.org/dsls.html#compilation-customizers](http://groovy-lang.org/dsls.html#compilation-customizers)
-
-Démo : [démo groovy compile](./docs/1_groovy_compile.webm?raw=true)
 
 ### étape 2 : compiler avec les API Jenkins
 
